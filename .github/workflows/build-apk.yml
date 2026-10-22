@@ -17,8 +17,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      # ลบ step ติดตั้ง Flutter ตัวเก่าออกไป เพราะ Flet จะจัดการเอง
-
       - name: ติดตั้ง Flet
         run: |
           python -m pip install --upgrade pip
@@ -31,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Minesweeper-App-APK
-          path: build/apk/app-release.apk
+          path: build/**/*.apk
