@@ -17,13 +17,13 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: ติดตั้ง Flet
+      - name: ติดตั้ง Flet (สำหรับรันบนเซิร์ฟเวอร์เท่านั้น)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install flet
 
-      - name: สั่ง Build APK (บังคับตอบ Yes อัตโนมัติ)
-        run: yes | flet build apk
+      - name: สั่ง Build APK (เฉพาะ 64-bit เพื่อลดขนาดไฟล์)
+        run: yes | flet build apk --arch arm64
 
       - name: อัปโหลดไฟล์ APK ให้เราดาวน์โหลด
         uses: actions/upload-artifact@v4
