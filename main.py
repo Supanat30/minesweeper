@@ -232,4 +232,4 @@ def main(page: ft.Page):
         page.update()
 
 # คำสั่งรันแอปพลิเคชัน (ใช้ main เพียวๆ เพื่อป้องกัน Error บนมือถือ)
-ft.app(main)
+ft.app(target=main)
