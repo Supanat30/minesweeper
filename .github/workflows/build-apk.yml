@@ -17,10 +17,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: ติดตั้ง Flutter SDK (ต้องใช้คู่กับ Flet 0.25.2)
+      - name: ติดตั้ง Flutter SDK (ล็อคเวอร์ชัน 3.24.3)
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          flutter-version: '3.24.3'
 
       - name: ติดตั้ง Flet (ล็อคเวอร์ชัน 0.25.2)
         run: |
