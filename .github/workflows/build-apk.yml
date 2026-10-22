@@ -23,7 +23,7 @@ jobs:
           pip install flet
 
       - name: สั่ง Build APK (เฉพาะ 64-bit เพื่อลดขนาดไฟล์)
-        run: yes | flet build apk --arch arm64
+        run: yes | flet build apk --arch arm64-v8a
 
       - name: อัปโหลดไฟล์ APK ให้เราดาวน์โหลด
         uses: actions/upload-artifact@v4
