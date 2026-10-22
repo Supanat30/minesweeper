@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main ] # หุ่นยนต์จะทำงานทุกครั้งที่มีการกด Push โค้ดเข้าสาขา main
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,18 +17,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: ติดตั้ง Flutter SDK (เบื้องหลัง)
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
+      # ลบ step ติดตั้ง Flutter ตัวเก่าออกไป เพราะ Flet จะจัดการเอง
 
       - name: ติดตั้ง Flet
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: สั่ง Build APK
-        run: flet build apk
+      - name: สั่ง Build APK (บังคับตอบ Yes อัตโนมัติ)
+        run: yes | flet build apk
 
       - name: อัปโหลดไฟล์ APK ให้เราดาวน์โหลด
         uses: actions/upload-artifact@v4
