@@ -17,7 +17,12 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: ติดตั้ง Flet (ล็อคเวอร์ชัน 0.25.2 ให้ตรงกับแอป 100%)
+      - name: ติดตั้ง Flutter SDK (ต้องใช้คู่กับ Flet 0.25.2)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: ติดตั้ง Flet (ล็อคเวอร์ชัน 0.25.2)
         run: |
           python -m pip install --upgrade pip
           pip install flet==0.25.2
@@ -26,8 +31,8 @@ jobs:
       - name: ลบไฟล์ขยะก่อนสร้างแอป
         run: rm -rf docs dist .venv venv __pycache__ .devcontainer
 
-      - name: สั่ง Build APK (เฉพาะ 64-bit)
-        run: yes | flet build apk --arch arm64-v8a
+      - name: สั่ง Build APK
+        run: flet build apk --arch arm64-v8a
 
       - name: อัปโหลดไฟล์ APK ให้เราดาวน์โหลด
         uses: actions/upload-artifact@v4
